@@ -6,7 +6,7 @@ const FeatureMovieSLide = ({ movieList, movieActive, setMovieActive }) => {
           return (
             <li
               key={movie.id}
-              className={`h-2 w-12 ${movie.id === movieActive.id ? "bg-slate-100" : "bg-slate-500"}`}
+              className={`h-2 w-12 ${movie.id === movieActive.id ? "bg-slate-100" : "bg-slate-500"} cursor-pointer`}
               onClick={() => setMovieActive(movie)}
             ></li>
           );

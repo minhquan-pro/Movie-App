@@ -21,7 +21,7 @@ const FeatureMovie = () => {
     });
   }, []);
 
-  const movieList = moviePopular.results?.slice(0, 4);
+  const movieList = moviePopular.results?.slice(0, 5);
 
   return (
     <div className="relative text-white">
