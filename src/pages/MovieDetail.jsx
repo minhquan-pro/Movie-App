@@ -4,12 +4,15 @@ import CircularProgressBar from "../component/CircularProgressBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { groupBy } from "lodash";
+import Loading from "../component/Loading";
 
 const MovieDetail = () => {
   const { id: idMovie } = useParams();
   const [movieDetail, setMovieDetail] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(
       `https://api.themoviedb.org/3/movie/${idMovie}?append_to_response=release_dates,credits`,
       {
@@ -20,10 +23,14 @@ const MovieDetail = () => {
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjBkZDYxMzYyNDQ2NWU3ZTgwOTYxYzIxN2U3NWY5NSIsIm5iZiI6MTc1MzA4NDg4Mi42OTcsInN1YiI6IjY4N2RmM2QyZmQ5NDU1MzFlZThhNGNmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZzoCBWSr7D1AE9JebBJH_gdt_lpziPHASlRrGQ--O28",
         },
       },
-    ).then(async (res) => {
-      const dataMovieDetail = await res.json();
-      setMovieDetail(dataMovieDetail);
-    });
+    )
+      .then(async (res) => {
+        const dataMovieDetail = await res.json();
+        setMovieDetail(dataMovieDetail);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [idMovie]);
 
   const genreList = movieDetail.genres?.map((genre) => {
@@ -42,6 +49,10 @@ const MovieDetail = () => {
 
   const groupCrew = groupBy(crews, "job");
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <div className="relative overflow-hidden">
@@ -57,7 +68,7 @@ const MovieDetail = () => {
               alt=""
             />
           </div>
-          <div className="flex-[2] text-[0.8vw]">
+          <div className="flex-[2] text-[1vw]">
             <p className="text-[2vw] font-bold">{movieDetail.title}</p>
             <div className="mt-3 flex items-center gap-8">
               <p className="inline-block h-11 border border-slate-400 p-2 text-slate-400">
@@ -82,7 +93,7 @@ const MovieDetail = () => {
               <p className="text-[1.1vw] font-bold">Overview</p>
               <p className="mt-2">{movieDetail.overview}</p>
             </div>
-            <div className="mt-8 grid grid-cols-2">
+            <div className="mt-8 grid grid-cols-2 text-[0.9vw]">
               {Object.keys(groupCrew).map((job) => {
                 return (
                   <div key={job}>
