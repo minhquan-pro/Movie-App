@@ -1,5 +1,5 @@
+import MovieCard from "@component/MovieCard";
 import { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
 
 const MediaList = ({ title, tabs }) => {
   const [tabActive, setTabActive] = useState(tabs[0]?.id);

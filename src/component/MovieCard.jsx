@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
-import CircularProgressBar from "../CircularProgressBar";
+import CircularProgressBar from "./CircularProgressBar";
+import { useEffect } from "react";
 
 const MovieCard = ({ media, tabActive }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Link
-      to={`./movie/${media.id}`}
+      to={`/movie/${media.id}`}
       className="cursor-pointer rounded-md border border-slate-500"
     >
       <img
@@ -12,7 +17,7 @@ const MovieCard = ({ media, tabActive }) => {
         alt=""
         className="rounded-md"
       />
-      <div className="relative top-[-3%] px-4 py-2 lg:top-[-6%]">
+      <div className="relative top-[-5%] px-4 py-2 lg:top-[-6%]">
         <CircularProgressBar voteAverage={media.vote_average} />
         <p className="mt-4 font-bold">{media.title || media.name}</p>
         <p className="mt-1">{media.release_date || media.first_air_date}</p>
