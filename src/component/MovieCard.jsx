@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import CircularProgressBar from "./CircularProgressBar";
-import { useEffect } from "react";
 
 const MovieCard = ({ media, tabActive }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <Link
       to={`/movie/${media.id}`}
       className="cursor-pointer rounded-md border border-slate-500"
+      onClick={() => {
+        window.scrollTo(0, 0);
+      }}
     >
       <img
         src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
