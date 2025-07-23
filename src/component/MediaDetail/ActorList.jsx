@@ -29,7 +29,7 @@ const ActorList = ({ movieDetail }) => {
         })}
       </div>
       <p
-        className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 p-3 font-bold"
+        className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold"
         onClick={() => setIsShowMore(!isShowMore)}
       >
         {isShowMore ? "Show Less" : "Show More"}
