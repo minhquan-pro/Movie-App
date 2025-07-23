@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../component/Loading";
 import Banner from "../component/MediaDetail/Banner";
+import ActorList from "../component/MediaDetail/ActorList";
 
 const MovieDetail = () => {
   const { id: idMovie } = useParams();
@@ -37,6 +38,14 @@ const MovieDetail = () => {
   return (
     <div>
       <Banner mediaInfo={movieDetail} />
+      <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10">
+        <div className="flex-[2]">
+          <ActorList movieDetail={movieDetail} />
+        </div>
+        <div className="flex-1">
+          <p className="mb-4 text-[1.4vw] font-bold">Information</p>
+        </div>
+      </div>
     </div>
   );
 };
