@@ -27,7 +27,7 @@ const Banner = ({ mediaInfo }) => {
         alt=""
         className="absolute w-full brightness-[.2]"
       />
-      <div className="relative z-10 m-auto flex max-w-screen-lg gap-6 py-10 text-white lg:gap-10">
+      <div className="relative z-10 m-auto flex max-w-screen-lg gap-6 px-6 py-10 text-white lg:gap-10">
         <div className="flex-1">
           <img
             src={`https://image.tmdb.org/t/p/original/${mediaInfo.poster_path}`}
