@@ -4,6 +4,7 @@ import Loading from "@component/Loading";
 import Banner from "@component/MediaDetail/Banner";
 import ActorList from "@component/MediaDetail/ActorList";
 import RelatedMediaList from "@component/MediaDetail/RelatedMediaList";
+import MovieInformation from "@component/MediaDetail/MovieInformation";
 
 const MovieDetail = () => {
   const { id: idMovie } = useParams();
@@ -65,9 +66,7 @@ const MovieDetail = () => {
           <ActorList movieDetail={movieDetail} />
           <RelatedMediaList mediaList={relatedMovie} />
         </div>
-        <div className="flex-1">
-          <p className="mb-4 text-[1.4vw] font-bold">Information</p>
-        </div>
+        <MovieInformation movieDetail={movieDetail} />
       </div>
     </div>
   );

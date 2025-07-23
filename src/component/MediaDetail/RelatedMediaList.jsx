@@ -16,6 +16,7 @@ const RelatedMediaList = ({ mediaList = [] }) => {
           return <MovieCard key={media.id} media={media} />;
         })}
       </div>
+
       <p
         className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold"
         onClick={() => {
