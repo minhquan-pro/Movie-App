@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const MediaList = ({ title, tabs }) => {
   const [tabActive, setTabActive] = useState(tabs[0]?.id);
-  // const [mediaList, setMediaList] = useState([]);
 
   const url = tabs
     .find((tab) => tab.id === tabActive)
@@ -31,7 +30,7 @@ const MediaList = ({ title, tabs }) => {
           })}
         </ul>
       </div>
-      <div className="sm: mt-12 grid grid-cols-2 grid-cols-4 gap-2 lg:grid-cols-6 lg:gap-4">
+      <div className="sm: mt-12 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-6 lg:gap-4">
         {mediaList?.map((media) => {
           return (
             <MovieCard key={media.id} media={media} tabActive={tabActive} />

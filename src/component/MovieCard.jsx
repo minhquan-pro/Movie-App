@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CircularProgressBar from "./CircularProgressBar";
+import Image from "./Image";
 
 const MovieCard = ({ media, tabActive }) => {
   return (
@@ -10,11 +11,14 @@ const MovieCard = ({ media, tabActive }) => {
         window.scrollTo(0, 0);
       }}
     >
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/w500/${media.poster_path}`}
-        alt=""
-        className="rounded-md"
+        alt
+        className="w-full rounded-md"
+        width={292}
+        height={437}
       />
+
       <div className="relative top-[-5%] px-4 py-2 lg:top-[-6%]">
         <CircularProgressBar voteAverage={media.vote_average} />
         <p className="mt-4 font-bold">{media.title || media.name}</p>

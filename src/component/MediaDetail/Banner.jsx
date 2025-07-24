@@ -2,6 +2,7 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
+import Image from "@component/Image";
 
 const Banner = ({ mediaInfo }) => {
   if (!mediaInfo) return;
@@ -24,16 +25,21 @@ const Banner = ({ mediaInfo }) => {
 
   return (
     <div className="relative overflow-hidden">
-      <img
+      <Image
         src={`https://image.tmdb.org/t/p/original/${mediaInfo.backdrop_path}`}
         alt=""
         className="absolute w-full brightness-[.2]"
+        width={1905}
+        height={592}
       />
+
       <div className="relative z-10 m-auto flex max-w-screen-lg gap-6 px-6 py-10 text-white lg:gap-10">
         <div className="flex-1">
-          <img
+          <Image
             src={`https://image.tmdb.org/t/p/original/${mediaInfo.poster_path}`}
             alt=""
+            width={312}
+            height={468}
           />
         </div>
         <div className="flex-[2] text-[1vw]">
