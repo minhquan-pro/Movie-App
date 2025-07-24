@@ -5,7 +5,7 @@ const MovieCard = ({ media, tabActive }) => {
   return (
     <Link
       to={`/movie/${media.id}`}
-      className="cursor-pointer rounded-md border border-slate-500"
+      className="relative cursor-pointer rounded-md border border-slate-500"
       onClick={() => {
         window.scrollTo(0, 0);
       }}
@@ -19,14 +19,14 @@ const MovieCard = ({ media, tabActive }) => {
         <CircularProgressBar voteAverage={media.vote_average} />
         <p className="mt-4 font-bold">{media.title || media.name}</p>
         <p className="mt-1">{media.release_date || media.first_air_date}</p>
-        {tabActive === "tv" || media.media_type === "tv" ? (
-          <div className="absolute bottom-[-20%] right-2 inline-block rounded bg-white px-2 py-1 font-bold text-black shadow-sm">
-            <p>TV SHOW</p>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
+      {tabActive === "tv" || media.media_type === "tv" ? (
+        <div className="absolute bottom-[2%] right-2 inline-block rounded bg-white px-2 py-1 font-bold text-black shadow-sm">
+          <p>TV SHOW</p>
+        </div>
+      ) : (
+        ""
+      )}
     </Link>
   );
 };
