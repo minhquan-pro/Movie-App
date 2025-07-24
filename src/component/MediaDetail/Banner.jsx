@@ -4,6 +4,8 @@ import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
 
 const Banner = ({ mediaInfo }) => {
+  if (!mediaInfo) return;
+
   const genreList = mediaInfo.genres?.map((genre) => {
     return genre.name;
   });

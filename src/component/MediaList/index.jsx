@@ -1,27 +1,17 @@
 import MovieCard from "@component/MovieCard";
-import { useEffect, useState } from "react";
+import useFetch from "@hooks/useFetch";
+import { useState } from "react";
 
 const MediaList = ({ title, tabs }) => {
   const [tabActive, setTabActive] = useState(tabs[0]?.id);
-  const [mediaList, setMediaList] = useState([]);
+  // const [mediaList, setMediaList] = useState([]);
 
-  const url = tabs.find((tab) => tab.id === tabActive)?.url;
+  const url = tabs
+    .find((tab) => tab.id === tabActive)
+    ?.url.slice(import.meta.env.VITE_API_HOST.length);
 
-  useEffect(() => {
-    if (!url) return;
-
-    fetch(url, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-      },
-    }).then(async (res) => {
-      const dataMovie = await res.json();
-      const AllMovieList = dataMovie.results;
-      setMediaList(AllMovieList);
-    });
-  }, [url]);
+  const { data } = useFetch({ url });
+  const mediaList = data.results;
 
   return (
     <div className="bg-black px-8 py-10 text-white">
@@ -42,7 +32,7 @@ const MediaList = ({ title, tabs }) => {
         </ul>
       </div>
       <div className="sm: mt-12 grid grid-cols-2 grid-cols-4 gap-2 lg:grid-cols-6 lg:gap-4">
-        {mediaList.map((media) => {
+        {mediaList?.map((media) => {
           return (
             <MovieCard key={media.id} media={media} tabActive={tabActive} />
           );

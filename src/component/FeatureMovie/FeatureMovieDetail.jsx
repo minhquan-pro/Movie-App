@@ -2,6 +2,8 @@ import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FeatureMovieDetail = ({ movieActive }) => {
+  if (!movieActive) return;
+
   return (
     <div>
       <div>

@@ -1,4 +1,6 @@
 const FeatureMovieSLide = ({ movieList, movieActive, setMovieActive }) => {
+  if (!movieActive) return;
+
   return (
     <div className="absolute bottom-[10%] right-20">
       <ul className="flex gap-4">

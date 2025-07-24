@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
 import FeatureMovieDetail from "./FeatureMovieDetail";
 import FeatureMovieSLide from "./FeatureMovieSlide";
+import useFetch from "@hooks/useFetch";
 
 const FeatureMovie = () => {
-  const [moviePopular, setMoviePopular] = useState({});
   const [movieActive, setMovieActive] = useState([]);
 
+  const { data: moviePopular } = useFetch({
+    url: "movie/popular",
+  });
+
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/popular", {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN} `,
-      },
-    }).then(async (res) => {
-      const data = await res.json();
-      setMoviePopular(data);
-      setMovieActive(data.results[0]);
-    });
-  }, []);
+    setMovieActive(moviePopular.results?.[0]);
+  }, [moviePopular]);
 
   const movieList = moviePopular.results?.slice(0, 5);
 

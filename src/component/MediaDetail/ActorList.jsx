@@ -4,7 +4,7 @@ import ActorInfo from "./ActorInfo";
 const ActorList = ({ movieDetail }) => {
   const [isShowMore, setIsShowMore] = useState(false);
 
-  const actors = movieDetail.credits?.cast.map((actor) => ({
+  const actors = movieDetail?.credits?.cast.map((actor) => ({
     id: actor.id,
     name: actor.name,
     character: actor.character,

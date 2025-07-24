@@ -1,6 +1,8 @@
 import { currencyFormatter } from "@libs/utlis";
 
 const MovieInformation = ({ movieDetail }) => {
+  if (!movieDetail) return;
+
   const originalCountry = movieDetail.origin_country?.join("").toLowerCase();
 
   return (

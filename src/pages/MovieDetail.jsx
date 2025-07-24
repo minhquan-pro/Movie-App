@@ -1,56 +1,21 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "@component/Loading";
 import Banner from "@component/MediaDetail/Banner";
 import ActorList from "@component/MediaDetail/ActorList";
 import RelatedMediaList from "@component/MediaDetail/RelatedMediaList";
 import MovieInformation from "@component/MediaDetail/MovieInformation";
+import useFetch from "@hooks/useFetch";
 
 const MovieDetail = () => {
   const { id: idMovie } = useParams();
-  const [movieDetail, setMovieDetail] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [relatedMovie, setRelatedMovie] = useState([]);
-  const [isRelatedMovieLoading, setIsRelatedMovieLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(
-      `https://api.themoviedb.org/3/movie/${idMovie}?append_to_response=release_dates,credits`,
-      {
-        method: "GET",
-        headers: {
-          accept: "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-        },
-      },
-    )
-      .then(async (res) => {
-        const dataMovieDetail = await res.json();
-        setMovieDetail(dataMovieDetail);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [idMovie]);
+  const { isLoading, data: movieDetail } = useFetch({
+    url: `movie/${idMovie}?append_to_response=release_dates,credits`,
+  });
 
-  useEffect(() => {
-    setIsRelatedMovieLoading(true);
-    fetch(`https://api.themoviedb.org/3/movie/${idMovie}/recommendations`, {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
-      },
-    })
-      .then(async (res) => {
-        const dataRelatedMovieList = await res.json();
-        setRelatedMovie(dataRelatedMovieList);
-      })
-      .finally(() => {
-        setIsRelatedMovieLoading(false);
-      });
-  }, [idMovie]);
+  const { isLoading: isRelatedMovieLoading, data: relatedMovie } = useFetch({
+    url: `movie/${idMovie}/recommendations`,
+  });
 
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
