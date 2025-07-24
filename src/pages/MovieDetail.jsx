@@ -21,8 +21,7 @@ const MovieDetail = () => {
         method: "GET",
         headers: {
           accept: "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjBkZDYxMzYyNDQ2NWU3ZTgwOTYxYzIxN2U3NWY5NSIsIm5iZiI6MTc1MzA4NDg4Mi42OTcsInN1YiI6IjY4N2RmM2QyZmQ5NDU1MzFlZThhNGNmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZzoCBWSr7D1AE9JebBJH_gdt_lpziPHASlRrGQ--O28",
+          Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
         },
       },
     )
@@ -41,8 +40,7 @@ const MovieDetail = () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjBkZDYxMzYyNDQ2NWU3ZTgwOTYxYzIxN2U3NWY5NSIsIm5iZiI6MTc1MzA4NDg4Mi42OTcsInN1YiI6IjY4N2RmM2QyZmQ5NDU1MzFlZThhNGNmNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZzoCBWSr7D1AE9JebBJH_gdt_lpziPHASlRrGQ--O28",
+        Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN}`,
       },
     })
       .then(async (res) => {

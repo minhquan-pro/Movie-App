@@ -1,3 +1,5 @@
+import { currencyFormatter } from "@libs/utlis";
+
 const MovieInformation = ({ movieDetail }) => {
   const originalCountry = movieDetail.origin_country?.join("").toLowerCase();
 
@@ -23,11 +25,11 @@ const MovieInformation = ({ movieDetail }) => {
       </div>
       <div className="mt-4">
         <p className="mb-1 font-bold">Budget</p>
-        <p>{movieDetail.budget}</p>
+        <p>{currencyFormatter(movieDetail.budget, "USD")}</p>
       </div>
       <div className="mt-4">
         <p className="mb-1 font-bold">Revenue</p>
-        <p>{movieDetail.revenue}</p>
+        <p>{currencyFormatter(movieDetail.revenue, "USD")}</p>
       </div>
     </div>
   );
