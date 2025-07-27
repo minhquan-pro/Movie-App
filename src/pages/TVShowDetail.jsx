@@ -35,6 +35,16 @@ const TVShowDetail = () => {
     job: crew.jobs[0].job,
   }));
 
+  const rawActors = tvDetail.aggregate_credits?.cast || [];
+
+  const actors = rawActors.map((actor) => ({
+    id: actor.id,
+    name: actor.name,
+    character: actor.roles[0].character,
+    pathImg: actor.profile_path,
+    episodeCount: actor.total_episode_count,
+  }));
+
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
   }
@@ -54,7 +64,7 @@ const TVShowDetail = () => {
       />
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
-          <ActorList movieDetail={tvDetail} />
+          <ActorList actors={actors} />
           <RelatedMediaList mediaList={relatedMovie} />
         </div>
         <MovieInformation movieDetail={tvDetail} />

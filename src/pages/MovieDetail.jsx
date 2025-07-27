@@ -31,6 +31,13 @@ const MovieDetail = () => {
     .filter((crew) => ["Director", "Writer", "Screenplay"].includes(crew.job))
     .map((crew) => ({ id: crew.id, name: crew.name, job: crew.job }));
 
+  const actors = movieDetail?.credits?.cast.map((actor) => ({
+    id: actor.id,
+    name: actor.name,
+    character: actor.character,
+    pathImg: actor.profile_path,
+  }));
+
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
   }
@@ -50,7 +57,7 @@ const MovieDetail = () => {
       />
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
-          <ActorList movieDetail={movieDetail} />
+          <ActorList actors={actors} />
           <RelatedMediaList mediaList={relatedMovie} />
         </div>
         <MovieInformation movieDetail={movieDetail} />

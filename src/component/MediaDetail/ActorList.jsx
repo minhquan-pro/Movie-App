@@ -1,15 +1,10 @@
 import { useState } from "react";
 import ActorInfo from "./ActorInfo";
 
-const ActorList = ({ movieDetail }) => {
+const ActorList = ({ actors }) => {
   const [isShowMore, setIsShowMore] = useState(false);
 
-  const actors = movieDetail?.credits?.cast.map((actor) => ({
-    id: actor.id,
-    name: actor.name,
-    character: actor.character,
-    pathImg: actor.profile_path,
-  }));
+  console.log(actors);
 
   const showActors = isShowMore ? actors : actors?.slice(0, 4);
 
@@ -21,9 +16,11 @@ const ActorList = ({ movieDetail }) => {
           return (
             <ActorInfo
               key={actor.id}
+              id={actor.id}
               name={actor.name}
               character={actor.character}
               pathImg={actor.pathImg}
+              episodeCount={actor.episodeCount}
             />
           );
         })}

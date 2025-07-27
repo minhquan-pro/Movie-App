@@ -1,6 +1,6 @@
 import Image from "@component/Image";
 
-const ActorInfo = ({ name, character, pathImg }) => {
+const ActorInfo = ({ id, name, character, pathImg, episodeCount = "" }) => {
   return (
     <div className="rounded-sm border border-slate-300 shadow-sm">
       <Image
@@ -14,7 +14,14 @@ const ActorInfo = ({ name, character, pathImg }) => {
       <div className="p-3">
         <p className="font-bold">{name}</p>
         <p>{character}</p>
-        <p className="mt-1">18</p>
+
+        {episodeCount && (
+          <p className="mt-1">
+            {episodeCount >= 2
+              ? `${episodeCount} Episodes`
+              : `${episodeCount} Episode`}
+          </p>
+        )}
       </div>
     </div>
   );
