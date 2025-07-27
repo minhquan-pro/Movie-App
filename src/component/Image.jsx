@@ -7,12 +7,15 @@ const Image = ({ src, width, height, className }) => {
 
   useEffect(() => {
     const img = document.createElement("img");
-    img.src = currentSrc;
-
+    img.src = src;
     img.onload = () => {
       setCurrentSrc(src);
     };
-  }, [currentSrc, src]);
+
+    return () => {
+      img.onload = null;
+    };
+  }, [src]);
 
   return (
     <img
