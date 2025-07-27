@@ -1,3 +1,4 @@
+import Image from "@component/Image";
 import { currencyFormatter } from "@libs/utlis";
 
 const MovieInformation = ({ movieDetail }) => {
@@ -15,7 +16,7 @@ const MovieInformation = ({ movieDetail }) => {
       <div className="mt-4">
         <p className="mb-1 font-bold">Original Country</p>
         <p>
-          <img
+          <Image
             src={`https://flagcdn.com/24x18/${originalCountry}.png`}
             alt=""
           />

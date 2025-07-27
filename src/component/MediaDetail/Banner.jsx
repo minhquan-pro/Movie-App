@@ -39,7 +39,7 @@ const Banner = ({
         <div className="flex-[2] text-[1vw]">
           <p className="text-[2vw] font-bold">{title}</p>
           <div className="mt-3 flex items-center gap-8">
-            <p className="inline-block h-11 border border-slate-400 p-2 text-slate-400">
+            <p className="flex h-11 items-center border border-slate-400 p-2 text-slate-400">
               {certification}
             </p>
             <div className="hidden sm:block">

@@ -21,7 +21,9 @@ const MovieCard = ({ media, tabActive }) => {
 
         <div className="relative top-[-5%] px-4 py-2 lg:top-[-6%]">
           <CircularProgressBar voteAverage={media.vote_average} />
-          <p className="mt-4 font-bold">{media.title || media.name}</p>
+          <p className="mt-4 line-clamp-2 font-bold">
+            {media.title || media.name}
+          </p>
           <p className="mt-1">{media.release_date || media.first_air_date}</p>
         </div>
         {tabActive === "tv" || media.media_type === "tv" ? (

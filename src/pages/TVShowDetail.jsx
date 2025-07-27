@@ -3,8 +3,8 @@ import Loading from "@component/Loading";
 import Banner from "@component/MediaDetail/Banner";
 import ActorList from "@component/MediaDetail/ActorList";
 import RelatedMediaList from "@component/MediaDetail/RelatedMediaList";
-import MovieInformation from "@component/MediaDetail/MovieInformation";
 import useFetch from "@hooks/useFetch";
+import TVShowInformation from "@component/MediaDetail/TVShowInformation";
 
 const TVShowDetail = () => {
   const { id: idMovie } = useParams();
@@ -67,7 +67,7 @@ const TVShowDetail = () => {
           <ActorList actors={actors} />
           <RelatedMediaList mediaList={relatedMovie} />
         </div>
-        <MovieInformation movieDetail={tvDetail} />
+        <TVShowInformation tvDetail={tvDetail} />
       </div>
     </div>
   );

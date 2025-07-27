@@ -3,9 +3,6 @@ import ActorInfo from "./ActorInfo";
 
 const ActorList = ({ actors }) => {
   const [isShowMore, setIsShowMore] = useState(false);
-
-  console.log(actors);
-
   const showActors = isShowMore ? actors : actors?.slice(0, 4);
 
   return (
