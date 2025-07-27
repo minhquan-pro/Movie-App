@@ -61,7 +61,7 @@ const Banner = ({
             <p className="text-[1.1vw] font-bold">Overview</p>
             <p className="mt-2">{overview}</p>
           </div>
-          <div className="mt-8 grid grid-cols-2 text-[0.9vw]">
+          <div className="mt-8 grid grid-cols-2 gap-6 text-[0.9vw]">
             {Object.keys(groupCrew).map((job) => {
               return (
                 <div key={job}>

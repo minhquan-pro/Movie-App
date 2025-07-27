@@ -19,9 +19,21 @@ const TVShowDetail = () => {
 
   const genres = tvDetail.genres?.map((genre) => genre.name);
 
-  const certification = tvDetail.content_ratings?.results.find(
+  const rawCertification = tvDetail.content_ratings?.results || [];
+  const usCertification = rawCertification.find(
     (rating) => rating.iso_3166_1 === "US",
-  )?.rating;
+  );
+  const certification = usCertification?.rating;
+
+  const rawCrews = tvDetail.aggregate_credits?.crew || [];
+  const directorAndWriters = rawCrews.filter((crew) =>
+    ["Director", "Writer"].includes(crew.jobs[0].job),
+  );
+  const crews = directorAndWriters.map((crew) => ({
+    id: crew.id,
+    name: crew.name,
+    job: crew.jobs[0].job,
+  }));
 
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
@@ -38,7 +50,7 @@ const TVShowDetail = () => {
         posterPath={tvDetail.poster_path}
         certification={certification}
         genreList={genres}
-        // crews={crews}
+        crews={crews}
       />
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
