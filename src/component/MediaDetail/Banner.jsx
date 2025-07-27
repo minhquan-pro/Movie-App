@@ -4,29 +4,23 @@ import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
 import Image from "@component/Image";
 
-const Banner = ({ mediaInfo }) => {
-  if (!mediaInfo) return;
-
-  const genreList = mediaInfo.genres?.map((genre) => {
-    return genre.name;
-  });
-
-  const certification = (mediaInfo.release_dates?.results || [])
-    .find((certi) => {
-      return certi.iso_3166_1 === "US";
-    })
-    ?.release_dates.find((result) => result.certification)?.certification;
-
-  const crews = mediaInfo.credits?.crew
-    .filter((crew) => ["Director", "Writer", "Screenplay"].includes(crew.job))
-    .map((crew) => ({ id: crew.id, name: crew.name, job: crew.job }));
-
+const Banner = ({
+  title,
+  releaseDate,
+  voteAverage,
+  overview,
+  backdropPath,
+  posterPath,
+  certification,
+  genreList,
+  crews,
+}) => {
   const groupCrew = groupBy(crews, "job");
 
   return (
     <div className="relative overflow-hidden">
       <Image
-        src={`https://image.tmdb.org/t/p/original/${mediaInfo.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
         alt=""
         className="absolute w-full brightness-[.2]"
         width={1905}
@@ -36,26 +30,26 @@ const Banner = ({ mediaInfo }) => {
       <div className="relative z-10 m-auto flex max-w-screen-lg gap-6 px-6 py-10 text-white lg:gap-10">
         <div className="flex-1">
           <Image
-            src={`https://image.tmdb.org/t/p/original/${mediaInfo.poster_path}`}
+            src={`https://image.tmdb.org/t/p/original/${posterPath}`}
             alt=""
             width={312}
             height={468}
           />
         </div>
         <div className="flex-[2] text-[1vw]">
-          <p className="text-[2vw] font-bold">{mediaInfo.title}</p>
+          <p className="text-[2vw] font-bold">{title}</p>
           <div className="mt-3 flex items-center gap-8">
             <p className="inline-block h-11 border border-slate-400 p-2 text-slate-400">
               {certification}
             </p>
             <div className="hidden sm:block">
-              <p className="inline-block">{mediaInfo.release_date}</p>
+              <p className="inline-block">{releaseDate}</p>
               <p className="mt-2">{genreList?.join(", ")}</p>
             </div>
           </div>
           <div className="mt-8 flex items-center gap-10 text-[1.2vw]">
             <div className="flex items-center gap-3">
-              <CircularProgressBar voteAverage={mediaInfo.vote_average} />
+              <CircularProgressBar voteAverage={voteAverage} />
               Rating
             </div>
             <div className="flex items-center gap-3">
@@ -65,7 +59,7 @@ const Banner = ({ mediaInfo }) => {
           </div>
           <div className="mt-5 hidden sm:block">
             <p className="text-[1.1vw] font-bold">Overview</p>
-            <p className="mt-2">{mediaInfo.overview}</p>
+            <p className="mt-2">{overview}</p>
           </div>
           <div className="mt-8 grid grid-cols-2 text-[0.9vw]">
             {Object.keys(groupCrew).map((job) => {
