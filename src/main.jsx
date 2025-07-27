@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePages from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
 import Header from "./component/Header";
+import TVShowDetail from "@pages/TVShowDetail";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -11,6 +12,7 @@ createRoot(document.getElementById("root")).render(
       <Route element={<Header />}>
         <Route path="/" element={<HomePages />} />
         <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/tv/:id" element={<TVShowDetail />} />
       </Route>
     </Routes>
   </BrowserRouter>,
