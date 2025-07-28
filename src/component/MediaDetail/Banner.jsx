@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { groupBy } from "lodash";
 import CircularProgressBar from "../CircularProgressBar";
 import Image from "@component/Image";
+import { useContext } from "react";
+import { modalProvider } from "@context/ModalProvider";
 
 const Banner = ({
   title,
@@ -14,8 +16,11 @@ const Banner = ({
   certification,
   genreList,
   crews,
+  keyTrailerVideo,
 }) => {
   const groupCrew = groupBy(crews, "job");
+
+  const { setIsShowing, setContent, setTitleVideo } = useContext(modalProvider);
 
   if (!title) return;
 
@@ -54,10 +59,17 @@ const Banner = ({
               <CircularProgressBar voteAverage={voteAverage} />
               Rating
             </div>
-            <div className="flex items-center gap-3">
+            <button
+              className="flex items-center gap-3"
+              onClick={() => {
+                setIsShowing(true);
+                setContent(keyTrailerVideo);
+                setTitleVideo(title);
+              }}
+            >
               <FontAwesomeIcon icon={faPlay} />
               Trailer
-            </div>
+            </button>
           </div>
           <div className="mt-5 hidden sm:block">
             <p className="text-[1.1vw] font-bold">Overview</p>

@@ -5,15 +5,18 @@ import HomePages from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
 import Header from "./component/Header";
 import TVShowDetail from "@pages/TVShowDetail";
+import ModalProvider from "@context/ModalProvider";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <Routes>
-      <Route element={<Header />}>
-        <Route path="/" element={<HomePages />} />
-        <Route path="/movie/:id" element={<MovieDetail />} />
-        <Route path="/tv/:id" element={<TVShowDetail />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>,
+  <ModalProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path="/" element={<HomePages />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/tv/:id" element={<TVShowDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </ModalProvider>,
 );

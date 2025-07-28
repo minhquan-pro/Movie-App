@@ -10,7 +10,7 @@ const MovieDetail = () => {
   const { id: idMovie } = useParams();
 
   const { isLoading, data: movieDetail } = useFetch({
-    url: `movie/${idMovie}?append_to_response=release_dates,credits`,
+    url: `movie/${idMovie}?append_to_response=release_dates,credits,videos`,
   });
 
   const { isLoading: isRelatedMovieLoading, data: relatedMovie } = useFetch({
@@ -38,6 +38,11 @@ const MovieDetail = () => {
     pathImg: actor.profile_path,
   }));
 
+  const trailerVideos = (movieDetail.videos?.results || []).find(
+    (video) => video.type === "Trailer",
+  );
+  const keyTrailerVideo = trailerVideos?.key;
+
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
   }
@@ -54,6 +59,7 @@ const MovieDetail = () => {
         certification={certification}
         genreList={genreList}
         crews={crews}
+        keyTrailerVideo={keyTrailerVideo}
       />
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
