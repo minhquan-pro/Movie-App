@@ -5,6 +5,7 @@ import ActorList from "@component/MediaDetail/ActorList";
 import RelatedMediaList from "@component/MediaDetail/RelatedMediaList";
 import useFetch from "@hooks/useFetch";
 import TVShowInformation from "@component/MediaDetail/TVShowInformation";
+import SeasonList from "@component/MediaDetail/SeasonList";
 
 const TVShowDetail = () => {
   const { id: idMovie } = useParams();
@@ -65,6 +66,7 @@ const TVShowDetail = () => {
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
           <ActorList actors={actors} />
+          <SeasonList tvDetail={tvDetail} />
           <RelatedMediaList mediaList={relatedMovie} />
         </div>
         <TVShowInformation tvDetail={tvDetail} />
