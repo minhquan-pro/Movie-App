@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "@component/Image";
 import { useContext } from "react";
 import { modalProvider } from "@context/ModalProvider";
+import { Link } from "react-router-dom";
 
 const FeatureMovieDetail = ({ movieActive, idMoviePopular }) => {
   if (!movieActive) return;
@@ -44,9 +45,11 @@ const FeatureMovieDetail = ({ movieActive, idMoviePopular }) => {
             <FontAwesomeIcon icon={faPlay} />
             Trailer
           </button>
-          <button className="rounded bg-slate-300/35 px-4 py-2">
-            View Detail
-          </button>
+          <Link to={`/movie/${movieActive.id}`}>
+            <button className="rounded bg-slate-300/35 px-4 py-2">
+              View Detail
+            </button>
+          </Link>
         </div>
       </div>
     </div>
