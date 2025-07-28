@@ -27,9 +27,10 @@ const TVShowDetail = () => {
   const certification = usCertification?.rating;
 
   const rawCrews = tvDetail.aggregate_credits?.crew || [];
-  const directorAndWriters = rawCrews.filter((crew) =>
-    ["Director", "Writer"].includes(crew.jobs[0].job),
-  );
+  const directorAndWriters = rawCrews
+    .filter((crew) => ["Director", "Writer"].includes(crew.jobs[0].job))
+    .slice(0, 10);
+
   const crews = directorAndWriters.map((crew) => ({
     id: crew.id,
     name: crew.name,

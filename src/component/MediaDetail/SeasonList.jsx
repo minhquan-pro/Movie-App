@@ -27,10 +27,10 @@ const SeasonList = ({ tvDetail }) => {
         })}
       </div>
       <p
-        className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold"
+        className={`${seasons?.length > 3 ? `mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold` : ""} `}
         onClick={() => setShowSeasons(!showSeasons)}
       >
-        {showSeasons ? " Show Less" : "Show More"}
+        {showSeasons ? "Show Less" : seasons?.length > 3 ? "Show More" : ""}
       </p>
     </div>
   );

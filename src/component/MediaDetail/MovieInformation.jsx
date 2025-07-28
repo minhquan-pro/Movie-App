@@ -6,6 +6,8 @@ const MovieInformation = ({ movieDetail }) => {
 
   const originalCountry = movieDetail.origin_country?.join("").toLowerCase();
 
+  if (!originalCountry) return;
+
   return (
     <div className="flex-1">
       <p className="mb-4 text-[1.4vw] font-bold">Information</p>
@@ -19,6 +21,8 @@ const MovieInformation = ({ movieDetail }) => {
           <Image
             src={`https://flagcdn.com/24x18/${originalCountry}.png`}
             alt=""
+            width={24}
+            height={18}
           />
         </p>
       </div>

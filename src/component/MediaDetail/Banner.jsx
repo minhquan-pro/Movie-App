@@ -17,6 +17,8 @@ const Banner = ({
 }) => {
   const groupCrew = groupBy(crews, "job");
 
+  if (!title) return;
+
   return (
     <div className="relative overflow-hidden">
       <Image
