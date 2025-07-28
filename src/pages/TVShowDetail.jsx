@@ -11,7 +11,7 @@ const TVShowDetail = () => {
   const { id: idMovie } = useParams();
 
   const { isLoading, data: tvDetail } = useFetch({
-    url: `tv/${idMovie}?append_to_response=content_ratings,credits,aggregate_credits`,
+    url: `tv/${idMovie}?append_to_response=content_ratings,credits,aggregate_credits,videos`,
   });
 
   const { isLoading: isRelatedMovieLoading, data: relatedMovie } = useFetch({
@@ -47,6 +47,11 @@ const TVShowDetail = () => {
     episodeCount: actor.total_episode_count,
   }));
 
+  const trailerVideos = (tvDetail.videos?.results || []).find(
+    (video) => video.type === "Trailer",
+  );
+  const keyTrailerVideo = trailerVideos?.key;
+
   if (isLoading && isRelatedMovieLoading) {
     return <Loading />;
   }
@@ -63,6 +68,7 @@ const TVShowDetail = () => {
         certification={certification}
         genreList={genres}
         crews={crews}
+        keyTrailerVideo={keyTrailerVideo}
       />
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
