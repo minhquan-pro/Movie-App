@@ -1,9 +1,14 @@
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "@component/Image";
+import { useContext } from "react";
+import { modalProvider } from "@context/ModalProvider";
 
-const FeatureMovieDetail = ({ movieActive }) => {
+const FeatureMovieDetail = ({ movieActive, idMoviePopular }) => {
   if (!movieActive) return;
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { setIsShowing, setIdContent } = useContext(modalProvider);
 
   return (
     <div>
@@ -29,7 +34,13 @@ const FeatureMovieDetail = ({ movieActive }) => {
           <p className="mt-1">{movieActive.overview}</p>
         </div>
         <div className="mt-5 flex gap-5 text-[20px]">
-          <button className="flex items-center gap-2 rounded bg-white px-4 py-1 text-black">
+          <button
+            className="flex items-center gap-2 rounded bg-white px-4 py-1 text-black"
+            onClick={() => {
+              setIsShowing(true);
+              setIdContent(idMoviePopular);
+            }}
+          >
             <FontAwesomeIcon icon={faPlay} />
             Trailer
           </button>

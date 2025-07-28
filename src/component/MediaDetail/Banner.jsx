@@ -20,7 +20,8 @@ const Banner = ({
 }) => {
   const groupCrew = groupBy(crews, "job");
 
-  const { setIsShowing, setContent, setTitleVideo } = useContext(modalProvider);
+  const { setIsShowing, setIdContent, setTitleVideo } =
+    useContext(modalProvider);
 
   if (!title) return;
 
@@ -63,7 +64,7 @@ const Banner = ({
               className="flex items-center gap-3"
               onClick={() => {
                 setIsShowing(true);
-                setContent(keyTrailerVideo);
+                setIdContent(keyTrailerVideo);
                 setTitleVideo(title);
               }}
             >

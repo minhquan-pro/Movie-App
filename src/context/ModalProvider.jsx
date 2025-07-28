@@ -5,7 +5,7 @@ export const modalProvider = createContext();
 
 const ModalProvider = ({ children }) => {
   const [isShowing, setIsShowing] = useState(false);
-  const [content, setContent] = useState("");
+  const [idContent, setIdContent] = useState("");
   const [titleVideo, setTitleVideo] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const ModalProvider = ({ children }) => {
   return (
     <div>
       <modalProvider.Provider
-        value={{ setIsShowing, setContent, setTitleVideo }}
+        value={{ setIsShowing, setIdContent, setTitleVideo }}
       >
         {children}
       </modalProvider.Provider>
@@ -28,13 +28,13 @@ const ModalProvider = ({ children }) => {
           className="fixed inset-0 z-10 flex items-center justify-center bg-black/80"
           onClick={() => setIsShowing(false)}
         >
-          {content ? (
+          {idContent ? (
             <iframe
-              src={`https://www.youtube.com/embed/${content}`}
+              src={`https://www.youtube.com/embed/${idContent}`}
               className="aspect-video w-[50vw]"
             ></iframe>
           ) : (
-            <p className="flex h-[200px] items-center rounded-lg border px-5 text-[2vw] font-bold text-white">
+            <p className="flex h-[200px] items-center rounded-lg border bg-white/60 px-5 text-[2vw] font-bold shadow-lg">
               No video for {titleVideo}
             </p>
           )}
