@@ -6,7 +6,7 @@ const MovieCard = ({ media, tabActive }) => {
   return (
     <div className="relative cursor-pointer rounded-md border border-slate-500 text-[1.2vw]">
       <Link
-        to={`${media.media_type === "tv" ? `/tv/${media.id}` : `/movie/${media.id}`} `}
+        to={`${media.media_type === "tv" ? `/tv/${media.id}` : `${media.media_type === "movie" ? `/movie/${media.id}` : `/tv/${media.id}`}`} `}
         onClick={() => {
           window.scrollTo(0, 0);
         }}
