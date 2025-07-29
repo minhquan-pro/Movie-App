@@ -1,9 +1,12 @@
 import MovieCard from "@component/MovieCard";
+import { activeProvider } from "@context/activeProvider";
 import useFetch from "@hooks/useFetch";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 const MediaList = ({ title, tabs }) => {
-  const [tabActive, setTabActive] = useState(tabs[0]?.id);
+  const { active, setActive } = useContext(activeProvider);
+
+  const [tabActive, setTabActive] = useState(tabs[active]?.id);
 
   const url = tabs
     .find((tab) => tab.id === tabActive)
@@ -22,7 +25,10 @@ const MediaList = ({ title, tabs }) => {
               <li
                 key={tab.id}
                 className={`px-8 py-2 ${tabActive === tab.id ? "bg-white text-black" : ""}`}
-                onClick={() => setTabActive(tab.id)}
+                onClick={() => {
+                  setTabActive(tab.id);
+                  setActive(tab.index);
+                }}
               >
                 {tab.name}
               </li>
