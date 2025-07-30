@@ -1,9 +1,8 @@
-import Header from "../component/Header";
 import FeatureMovie from "../component/FeatureMovie";
 import MediaList from "../component/MediaList";
 import { TOP_RATED_TABS, TRENDING_TABS } from "@libs/constant";
 
-function HomePage() {
+function HomePages() {
   return (
     <div>
       <FeatureMovie />
@@ -13,4 +12,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomePages;

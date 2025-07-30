@@ -74,7 +74,10 @@ const TVShowDetail = () => {
         <div className="flex-[2]">
           <ActorList actors={actors} />
           <SeasonList tvDetail={tvDetail} />
-          <RelatedMediaList mediaList={relatedMovie} />
+          <RelatedMediaList
+            mediaList={relatedMovie?.results}
+            title="More Like This"
+          />
         </div>
         <TVShowInformation tvDetail={tvDetail} />
       </div>

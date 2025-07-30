@@ -17,6 +17,8 @@ const MovieDetail = () => {
     url: `movie/${idMovie}/recommendations`,
   });
 
+  console.log(relatedMovie);
+
   const genreList = movieDetail.genres?.map((genre) => {
     return genre.name;
   });
@@ -64,7 +66,10 @@ const MovieDetail = () => {
       <div className="m-auto flex max-w-screen-xl gap-10 px-6 py-10 text-[1.2vw]">
         <div className="flex-[2]">
           <ActorList actors={actors} />
-          <RelatedMediaList mediaList={relatedMovie} />
+          <RelatedMediaList
+            mediaList={relatedMovie?.results}
+            title="More Like This"
+          />
         </div>
         <MovieInformation movieDetail={movieDetail} />
       </div>

@@ -21,7 +21,7 @@ const Image = ({ src, width, height, className }) => {
     <img
       src={currentSrc}
       alt=""
-      className={`${src === currentSrc ? className : `${className} blur-md`} `}
+      className={`${src === currentSrc || !src ? className : `${className} blur-md`} `}
       width={width}
       height={height}
     />

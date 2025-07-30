@@ -22,12 +22,16 @@ const ActorList = ({ actors }) => {
           );
         })}
       </div>
-      <p
-        className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold"
-        onClick={() => setIsShowMore(!isShowMore)}
-      >
-        {isShowMore ? "Show Less" : "Show More"}
-      </p>
+      {actors?.length > 4 ? (
+        <p
+          className="mt-3 inline-block cursor-pointer rounded-sm border border-slate-600 px-2 py-3 font-bold"
+          onClick={() => setIsShowMore(!isShowMore)}
+        >
+          {isShowMore ? "Show Less" : "Show More"}
+        </p>
+      ) : (
+        ""
+      )}{" "}
     </div>
   );
 };

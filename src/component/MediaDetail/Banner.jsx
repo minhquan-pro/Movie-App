@@ -28,7 +28,9 @@ const Banner = ({
   return (
     <div className="relative overflow-hidden">
       <Image
-        src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
+        src={
+          backdropPath && `https://image.tmdb.org/t/p/original/${backdropPath}`
+        }
         alt=""
         className="absolute w-full brightness-[.2]"
         width={1905}
@@ -38,7 +40,9 @@ const Banner = ({
       <div className="relative z-10 m-auto flex max-w-screen-lg gap-6 px-6 py-10 text-white lg:gap-10">
         <div className="flex-1">
           <Image
-            src={`https://image.tmdb.org/t/p/original/${posterPath}`}
+            src={
+              posterPath && `https://image.tmdb.org/t/p/original/${posterPath}`
+            }
             alt=""
             width={312}
             height={468}
