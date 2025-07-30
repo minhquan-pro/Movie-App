@@ -1,17 +1,13 @@
 import MovieCard from "@component/MovieCard";
-import { activeProvider } from "@context/activeProvider";
 import useFetch from "@hooks/useFetch";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-const MediaList = ({ title, tabs }) => {
-  const { active, setActive } = useContext(activeProvider);
-
-  const [tabActive, setTabActive] = useState(tabs[active]?.id);
+const MediaList = ({ tabs, title }) => {
+  const [tabActive, setTabActive] = useState(tabs[0]?.id);
 
   const url = tabs
     .find((tab) => tab.id === tabActive)
     ?.url.slice(import.meta.env.VITE_API_HOST.length);
-
   const { data } = useFetch({ url });
   const mediaList = data.results;
 
@@ -27,7 +23,6 @@ const MediaList = ({ title, tabs }) => {
                 className={`px-8 py-2 ${tabActive === tab.id ? "bg-white text-black" : ""}`}
                 onClick={() => {
                   setTabActive(tab.id);
-                  setActive(tab.index);
                 }}
               >
                 {tab.name}

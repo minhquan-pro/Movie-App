@@ -6,20 +6,19 @@ import MovieDetail from "./pages/MovieDetail";
 import Header from "./component/Header";
 import TVShowDetail from "@pages/TVShowDetail";
 import ModalProvider from "@context/ModalProvider";
-import ActiveProvider from "@context/activeProvider";
+import PeopleInfor from "@component/MediaDetail/PeopleInfor";
 
 createRoot(document.getElementById("root")).render(
-  <ActiveProvider>
-    <ModalProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<Header />}>
-            <Route path="/" element={<HomePages />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
-            <Route path="/tv/:id" element={<TVShowDetail />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </ModalProvider>
-  </ActiveProvider>,
+  <ModalProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Header />}>
+          <Route path="/" element={<HomePages />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/tv/:id" element={<TVShowDetail />} />
+          <Route path="people/:id" element={<PeopleInfor />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </ModalProvider>,
 );
