@@ -7,7 +7,7 @@ const MediaList = ({ tabs, title }) => {
 
   const url = tabs
     .find((tab) => tab.id === tabActive)
-    ?.url.slice(import.meta.env.VITE_API_HOST.length);
+    ?.url.slice(import.meta.env.VITE_API_HOST?.length);
   const { data } = useFetch({ url });
   const mediaList = data.results;
 
