@@ -14,10 +14,11 @@ const Header = () => {
           <a href="">Truyền hình</a>
         </div>
         <div>
-          <FontAwesomeIcon icon={faSearch} className="cursor-pointer" />
+          <Link to={"/search"}>
+            <FontAwesomeIcon icon={faSearch} className="cursor-pointer" />
+          </Link>
         </div>
       </header>
-
       <Outlet />
     </div>
   );

@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
 import ModalProvider from "@context/ModalProvider";
 import React from "react";
+import SearchPage from "@pages/SearchPage";
 
 const HomePages = React.lazy(() => import("@pages/HomePages"));
 const MovieDetail = React.lazy(() => import("@pages/MovieDetail"));
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/tv/:id" element={<TVShowDetail />} />
           <Route path="people/:id" element={<PeoplePage />} />
+          <Route path="/search" element={<SearchPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
