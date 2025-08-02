@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
 import ModalProvider from "@context/ModalProvider";
 import React from "react";
-import SearchPage from "@pages/SearchPage";
 
 const HomePages = React.lazy(() => import("@pages/HomePages"));
 const MovieDetail = React.lazy(() => import("@pages/MovieDetail"));
 const TVShowDetail = React.lazy(() => import("@pages/TVShowDetail"));
 const PeoplePage = React.lazy(() => import("@pages/PeoplePage"));
+const SearchPage = React.lazy(() => import("@pages/SearchPage"));
 
 createRoot(document.getElementById("root")).render(
   <ModalProvider>

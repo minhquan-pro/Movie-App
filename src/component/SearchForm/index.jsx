@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import FormField from "./FormField";
 import MediaTypeInput from "./FormInput/MediaTypeInput";
 import GenresInput from "./FormInput/GenresInput";
 import RatingInput from "./FormInput/RatingInput";
+import { useSearchParams } from "react-router-dom";
 
-const SearchForm = () => {
-  const { handleSubmit, control } = useForm({
+const SearchForm = ({ setGetDataForm }) => {
+  const [searchParam] = useSearchParams();
+  const mediaType = searchParam.get("mediaType");
+
+  const { handleSubmit, control, watch } = useForm({
     defaultValues: {
-      mediaType: "movie",
+      mediaType: ["tv", "movie"].includes(mediaType) ? mediaType : "movie",
       genres: [],
       rating: "All",
     },
@@ -18,8 +22,15 @@ const SearchForm = () => {
     console.log(data);
   };
 
+  const dataForm = watch();
+
+  useEffect(() => {
+    setGetDataForm(dataForm);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(dataForm)]);
+
   return (
-    <div>
+    <div className="rounded border p-5 shadow-lg">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormField
           name="mediaType"
@@ -40,11 +51,6 @@ const SearchForm = () => {
           label="Rating"
           control={control}
           Component={RatingInput}
-        />
-
-        <input
-          type="submit"
-          className="mt-5 cursor-pointer rounded-sm border border-slate-600 px-3 py-1 font-bold"
         />
       </form>
     </div>

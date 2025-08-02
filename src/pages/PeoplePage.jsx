@@ -52,7 +52,11 @@ const PeoplePage = () => {
           <p className="text-[1.3vw] font-bold">Biography</p>
           <p className="mt-2 whitespace-pre-line">{person.biography}</p>
         </div>
-        <RelatedMediaList mediaList={relatedMovie} title="Known For" />
+        <RelatedMediaList
+          mediaList={relatedMovie}
+          title="Known For"
+          className="mt-8"
+        />
       </div>
     </div>
   );

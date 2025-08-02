@@ -69,6 +69,7 @@ const MovieDetail = () => {
           <RelatedMediaList
             mediaList={relatedMovie?.results}
             title="More Like This"
+            className="mt-8"
           />
         </div>
         <MovieInformation movieDetail={movieDetail} />

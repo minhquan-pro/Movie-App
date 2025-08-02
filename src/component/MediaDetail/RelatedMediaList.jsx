@@ -1,7 +1,7 @@
 import MovieCard from "@component/MovieCard";
 import { useState } from "react";
 
-const RelatedMediaList = ({ mediaList = [], title }) => {
+const RelatedMediaList = ({ mediaList = [], title, className }) => {
   const [isShowMoreRelatedMedias, setIsShowMoreRelatedMedias] = useState(false);
 
   const currentRelatedMedias = isShowMoreRelatedMedias
@@ -9,8 +9,8 @@ const RelatedMediaList = ({ mediaList = [], title }) => {
     : mediaList?.slice(0, 8);
 
   return (
-    <div className="mt-10">
-      <p className="mb-4 text-[1.4vw] font-bold">{title}</p>
+    <div className={className}>
+      {title && <p className="mb-4 text-[1.4vw] font-bold">{title}</p>}
       <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-4">
         {currentRelatedMedias?.map((media) => {
           return <MovieCard key={media.id} media={media} />;

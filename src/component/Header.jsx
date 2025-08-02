@@ -10,8 +10,10 @@ const Header = () => {
           <Link to={"/"}>
             <img src="/netflix.png" alt="" className="w-16 sm:w-28" />
           </Link>
-          <a href="">Phim</a>
-          <a href="">Truyền hình</a>
+          <Link to="/search?mediaType=movie" href="">
+            Movie
+          </Link>
+          <Link to="/search?mediaType=tv">TV Show</Link>
         </div>
         <div>
           <Link to={"/search"}>
