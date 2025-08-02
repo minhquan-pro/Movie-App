@@ -3,9 +3,16 @@ import { useForm } from "react-hook-form";
 import FormField from "./FormField";
 import MediaTypeInput from "./FormInput/MediaTypeInput";
 import GenresInput from "./FormInput/GenresInput";
+import RatingInput from "./FormInput/RatingInput";
 
 const SearchForm = () => {
-  const { handleSubmit, control, register } = useForm();
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      mediaType: "movie",
+      genres: [],
+      rating: "All",
+    },
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -26,6 +33,13 @@ const SearchForm = () => {
           label="Genres"
           control={control}
           Component={GenresInput}
+        />
+
+        <FormField
+          name="rating"
+          label="Rating"
+          control={control}
+          Component={RatingInput}
         />
 
         <input
