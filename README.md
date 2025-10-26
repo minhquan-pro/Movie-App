@@ -1,40 +1,62 @@
-🎬 Movie App — Powered by TMDB API
-🧩 Description
+# Movie App Clone
 
-This Movie App is a modern web application built with React and integrated with The Movie Database (TMDB) API. It allows users to explore a vast collection of movies, view trending titles, search for specific films, and check detailed information such as ratings, release dates, and overviews.
+A lightweight movie/TV browsing UI built with React + Vite. It demonstrates a small media discovery app with feature components, a custom fetch hook, and responsive UI powered by Tailwind CSS.
 
-The main goal of this project is to strengthen my understanding of React fundamentals and API integration. By building this app, I learned how to manage states efficiently, fetch data asynchronously, and create a clean, reusable component structure.
+## Key features
+- Home page with featured movie / media slides
+- Media list and detail pages (movie, TV show, people)
+- Search form with filters (genres, media type)
+- Reusable UI components: MovieCard, Header, Loading, Image, CircularProgressBar
+- Modal provider pattern for global modal usage
+- Small custom data-fetch hook (useFetch) for API calls
 
-⚙️ Features
+## Tech stack
+- React (JSX) + Vite
+- Tailwind CSS
+- PostCSS
+- Vanilla JavaScript utilities and hooks
 
-  🔍 Search Movies: Find any movie using real-time data from TMDB.
-  
-  🎞️ Trending & Popular Lists: Display movies that are currently trending or highly rated.
-  
-  📄 Movie Details: View full movie information including description, genres, ratings, and release date.
-  
-  💻 Responsive Design: Optimized layout for both desktop and mobile users.
-  
-  ⚡ Dynamic Routing: Built with React Router for smooth navigation between pages.
+## Project structure (important files)
+- src/
+  - component/ — UI components and feature subfolders (FeatureMovie, MediaDetail, MediaList, SearchForm, ...)
+  - context/ — ModalProvider
+  - hooks/ — useFetch
+  - libs/ — constants and helpers
+  - pages/ — route pages (HomePages, MovieDetail, TVShowDetail, PeoplePage, SearchPage)
+  - index.css, main.jsx — app entry
+- public/fonts/ — bundled fonts
 
-🛠️ Tech Stack
+## Environment
+Create a `.env` file in the project root (Vite loads `.env` by default). Typical variables used by media apps:
+```
+VITE_API_BASE_URL=https://api.themoviedb.org/3
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+```
+Adjust variable names if your code expects different keys (search `import.meta.env` in the code).
 
-  Frontend: React, React Router, TailwindCSS
-  
-  API: The Movie Database (TMDB) API
-  
-  State Management: React Hooks (useState, useEffect)
-  
-  Tools: Vite, Fetch, Git
+## Install & Run
+1. Install dependencies
+   - npm: `npm install`
+   - yarn: `yarn`
 
-🎯 Learning Goals
-  Understand how to work with RESTful APIs in React.
-  Learn effective state and effect management.
-  Practice reusable component design and clean folder structure.
-  Gain experience in building a visually appealing, responsive UI.
+2. Run dev server
+   - npm: `npm run dev`
+   - yarn: `yarn dev`
+   Open the URL shown by Vite (default http://localhost:5173).
 
-🚀 Future Improvements
-  Add user authentication and watchlist features.
-  Implement pagination and infinite scrolling.
-  Integrate movie trailers via YouTube API.
-  Improve overall performance and error handling.
+3. Build for production
+   - npm: `npm run build`
+   - Preview build: `npm run preview`
+
+## Notes & tips
+- API: If the app uses The Movie Database (TMDB), supply a valid API key and ensure rate limits are respected.
+- Images: optimize large assets; the project uses an Image component — check placeholder / lazy-loading behavior.
+- Components: MediaDetail contains many subcomponents (ActorList, SeasonList, RelatedMediaList) — reuse them when adding features.
+- Hooks: `useFetch` centralizes fetching logic; extend it for caching, aborting, or error handling if needed.
+- Accessibility: ensure interactive elements (buttons/links) have appropriate labels/alt text for images.
+
+## Contributing
+Feel free to open issues or submit PRs for bug fixes, feature requests, or performance improvements.
+
+## License
+Add your preferred license. (No license file included by default.)
